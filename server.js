@@ -3,7 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require("dotenv/config");
 //IMPORTING THE MODELS CREATED FOR USE
 //=====================================
 const AboutUs = require("./AboutUs");
@@ -11,16 +11,10 @@ const AboutUs = require("./AboutUs");
 // INITIALIZING THE APPLICATION
 // =============================
 const app = express();
-
+const port = process.env.PORT || 3003;
 //APP CONFIGURATIONS
 //==================
-const port =
-  process.env.PORT ||
-  3003; /*Just incase we decide to deploy online you know.It will be listening from that new port.*/
-
-const connection_url = `mongodb+srv://FredzTech:Beijingbike5@cluster0.a9nya.mongodb.net/freds_portfolio?retryWrites=true&w=majority`;
-
-mongoose.connect(connection_url, {
+mongoose.connect(process.env.REACT_APP_BACKEND_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
