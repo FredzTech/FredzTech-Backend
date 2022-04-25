@@ -11,7 +11,7 @@ const AboutUs = require("./AboutUs");
 // INITIALIZING THE APPLICATION
 // =============================
 const app = express();
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3000;
 //APP CONFIGURATIONS
 //==================
 mongoose.connect(process.env.REACT_APP_BACKEND_URL, {
