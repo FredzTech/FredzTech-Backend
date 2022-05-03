@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { AboutUs } = require("../models/Models");
+const { fetchController } = require("../controllers/aboutUsControllers");
 router.get("/test", async (req, res) => {
   try {
     res.send("Hello there from aboutUs Route test.").status(200);
@@ -9,15 +9,7 @@ router.get("/test", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  let findings = await AboutUs.find({});
-
-  try {
-    res.send(findings).status(200);
-  } catch (error) {
-    res.send(error).status(500);
-  }
-});
+router.get("/", fetchController);
 
 router.post("/", async (req, res) => {
   let dataRecieved = req.body; //The power of body parser in interception manifested.
