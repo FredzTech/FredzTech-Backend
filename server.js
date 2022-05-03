@@ -6,7 +6,7 @@ const cors = require("cors");
 require("dotenv/config");
 //IMPORTING THE MODELS CREATED FOR USE
 //=====================================
-const AboutUs = require("./AboutUs");
+const { AboutUs } = require("./models/Models");
 
 // INITIALIZING THE APPLICATION
 // =============================
