@@ -1,28 +1,8 @@
-const bodyParser = require("body-parser");
 const multer = require("multer");
-const cors = require("cors");
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
 const { AboutUs } = require("../models/Models");
-
 require("dotenv/config");
-
-// CONFIGURING THE MIDDLEWARES
-//==============================
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
-
-// REGISTERING EJS AS TEMPLATING ENGINE.
-//=======================================
-app.set("view engine", "ejs");
-
-console.log(
-  process.env.S3_ACCESS_KEY,
-  process.env.S3_SECRET_ACCESS_KEY,
-  process.env.S3_BUCKET_REGION,
-  process.env.S3_BUCKET_NAME
-);
 
 // CONNECTING TO THE AWS S3 BUCKET
 //===================================
@@ -49,8 +29,8 @@ const upload = multer({
 
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
-const fetchPageController = async (req, res) => {
-  await AboutUs.find({}, (err, items) => {
+const fetchPageController = (req, res) => {
+  AboutUs.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);

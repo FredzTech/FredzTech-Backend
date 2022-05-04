@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   fetchPageController,
   postImageController,
 } = require("../controllers/aboutUsControllers");
+
 router.get("/test", async (req, res) => {
   try {
     res.send("Hello there from brands route test.").status(200);
