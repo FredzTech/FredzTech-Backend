@@ -1,15 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const {
-  rootController,
-  testController,
-  connectionController,
-} = require("../controllers/homePageControllers");
+  fetchPageController,
+  postImageController,
+} = require("../controllers/aboutUsControllers");
+router.get("/test", async (req, res) => {
+  try {
+    res.send("Hello there from brands route test.").status(200);
+  } catch (error) {
+    res.send(error).status(500);
+  }
+});
 
-// ROUTING IN ACTION
-//===================
-router.get("/", rootController);
-router.get("/test", testController);
-router.get("/connection", connectionController);
+router.get("/", fetchPageController);
+
+router.post("/", postImageController);
 
 module.exports = router;

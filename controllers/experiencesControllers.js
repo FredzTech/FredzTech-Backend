@@ -3,7 +3,7 @@ const multer = require("multer");
 const cors = require("cors");
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
-const { AboutUs } = require("../models/Models");
+const { Experience } = require("../models/Models");
 
 require("dotenv/config");
 
@@ -39,7 +39,7 @@ const storage = multerS3({
     cb(null, { fieldName: file.fieldname });
   },
   key: function (req, file, cb) {
-    cb(null, `AboutUs-${Date.now()}.jpeg`);
+    cb(null, `Experience-${Date.now()}.jpeg`);
   },
 });
 
@@ -50,12 +50,12 @@ const upload = multer({
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
 const fetchPageController = async (req, res) => {
-  await AboutUs.find({}, (err, items) => {
+  await Experience.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
-      res.render("aboutUsPage", { items: items });
+      res.render("experiencesPage", { items: items });
     }
   });
 };
@@ -68,7 +68,7 @@ const postImageController = (req, res, next) => {
   uploadSingle(req, res, async (err) => {
     if (err) return res.status(400).send(err);
 
-    await AboutUs.create({
+    await Experience.create({
       name: req.body.name,
       desc: req.body.desc,
       location: req.file.location,

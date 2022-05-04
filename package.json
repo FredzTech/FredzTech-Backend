@@ -9,9 +9,14 @@
   "author": "Alfred",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1127.0",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
     "express": "^4.17.3",
-    "mongoose": "^6.3.0"
+    "mongoose": "^6.3.0",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0"
   }
 }
