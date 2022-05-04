@@ -39,6 +39,20 @@ const fetchPageController = (req, res) => {
     }
   });
 };
+const dataSaving = async (req, res, next) => {
+  let data = req.body;
+  try {
+    const email = await Brand.create(data);
+    await email.save();
+    res.send(email);
+  } catch (error) {
+    let err = error;
+    res.send(err + " " + " Amd bytheway the email is already registered.");
+
+    res.status(500);
+  }
+  next();
+};
 // THE POST REQUEST FOR PROCESSING THE UPLOADED FILE.
 //====================================================
 
@@ -58,4 +72,4 @@ const postImageController = (req, res, next) => {
   });
 };
 
-module.exports = { fetchPageController, postImageController };
+module.exports = { dataSaving, fetchPageController, postImageController };

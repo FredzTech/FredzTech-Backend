@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   fetchPageController,
   postImageController,
+  dataSaving,
 } = require("../controllers/brandsControllers");
 router.get("/test", async (req, res) => {
   try {
@@ -14,6 +15,6 @@ router.get("/test", async (req, res) => {
 
 router.get("/", fetchPageController);
 
-router.post("/", postImageController);
+router.post("/", dataSaving, postImageController);
 
 module.exports = router;

@@ -39,19 +39,21 @@ const fetchPageController = (req, res) => {
     }
   });
 };
+
 // THE POST REQUEST FOR PROCESSING THE UPLOADED FILE.
 //====================================================
 
 const postImageController = (req, res, next) => {
+  console.log("Post Request Acknowledged.");
   const uploadSingle = upload.single("image"); //Multer uploads the image to aws s3.
   //WORKING WITH THE RETURNED DATA AFTER MULTER DOES ITS THING.
   uploadSingle(req, res, async (err) => {
     if (err) return res.status(400).send(err);
 
     await AboutUs.create({
-      name: req.body.name,
-      desc: req.body.desc,
-      location: req.file.location,
+      title: req.body.name,
+      description: req.body.desc,
+      imageUrl: req.file.location,
     });
 
     res.status(200).json({ data: req.file.location });
