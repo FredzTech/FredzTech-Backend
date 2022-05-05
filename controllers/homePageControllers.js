@@ -8,7 +8,7 @@ const rootController = (req, res) => {
 const testController = (req, res) => {
   try {
     res
-      .send("Hello there from homepage test route handler in action.")
+      .send("Hello there from homepage test route handler is in play")
       .status(200);
   } catch (error) {
     res.send(error).status(500);

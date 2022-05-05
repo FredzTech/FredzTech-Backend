@@ -2,6 +2,7 @@ const multer = require("multer");
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
 const { Skill } = require("../models/Models");
+const { render } = require("ejs");
 
 require("dotenv/config");
 
@@ -50,12 +51,12 @@ const postImageController = (req, res, next) => {
     if (err) return res.status(400).send(err);
 
     await Skill.create({
+      icon: req.file.location,
+      bgColor: req.body.bgColor,
       name: req.body.name,
-      desc: req.body.desc,
-      location: req.file.location,
     });
 
-    res.status(200).json({ data: req.file.location });
+    res.status(200).redirect("/skills");
   });
 };
 

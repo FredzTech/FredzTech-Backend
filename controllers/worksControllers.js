@@ -55,7 +55,7 @@ const postImageController = (req, res, next) => {
       location: req.file.location,
     });
 
-    res.status(200).json({ data: req.file.location });
+    res.status(200).redirect("/works");
   });
 };
 

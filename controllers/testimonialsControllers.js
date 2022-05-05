@@ -51,11 +51,12 @@ const postImageController = (req, res, next) => {
 
     await Testimonial.create({
       name: req.body.name,
-      desc: req.body.desc,
-      location: req.file.location,
+      company: req.body.company,
+      imageUrl: req.file.location,
+      feedback: req.body.feedback,
     });
 
-    res.status(200).json({ data: req.file.location });
+    res.status(200).redirect("/testimonials");
   });
 };
 

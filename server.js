@@ -3,8 +3,10 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3000;
 require("dotenv/config");
+
+const port = process.env.PORT || "3000";
+
 // INITIALIZING THE APPLICATION
 // =============================
 const app = express();
@@ -56,7 +58,7 @@ app.use("/contacts", ContactsRoute);
 app.use("/experiences", ExperiencesRoute);
 app.use("/skills", SkillsRoute);
 app.use("/testimonials", TestimonialsRoute);
-app.use("/workexperiences", WorkExperiencesRoute);
+app.use("/workExperiences", WorkExperiencesRoute);
 app.use("/works", WorksRoute);
 
 // CONFIGURING THE LISTENING PORT.

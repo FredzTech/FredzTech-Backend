@@ -81,7 +81,7 @@ const TestimonialSchema = new Schema({
     type: String,
     required: true,
   },
-  imgUrl: {
+  imageUrl: {
     type: String,
     required: true,
   },
@@ -100,11 +100,7 @@ const WorkExperienceSchema = new Schema({
     type: String,
     required: true,
   },
-  imgUrl: {
-    type: String,
-    required: true,
-  },
-  feedback: {
+  description: {
     type: String,
     required: true,
   },

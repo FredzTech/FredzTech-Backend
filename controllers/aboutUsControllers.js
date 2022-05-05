@@ -30,12 +30,13 @@ const upload = multer({
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
 const fetchPageController = (req, res) => {
+  let message = "Hello there";
   AboutUs.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
-      res.render("aboutUsPage", { items: items });
+      res.render("aboutUsPage", { items, message });
     }
   });
 };
@@ -56,7 +57,7 @@ const postImageController = (req, res, next) => {
       imageUrl: req.file.location,
     });
 
-    res.status(200).json({ data: req.file.location });
+    res.status(200).redirect("/aboutUs");
   });
 };
 
