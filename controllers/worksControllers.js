@@ -47,7 +47,7 @@ const fetchPageController = (req, res) => {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
-      res.render("worksPage", { items: items });
+      res.status(200).send(items);
     }
   });
 };
@@ -61,12 +61,14 @@ const postImageController = (req, res, next) => {
     if (err) return res.status(400).send(err);
 
     await Work.create({
-      name: req.body.name,
-      desc: req.body.desc,
-      location: req.file.location,
+      title: req.body.title,
+      description: req.body.description,
+      projectLink: req.body.projectLink,
+      codeLink: req.body.codeLink,
+      imageUrl: req.file.location,
+      tags: req.body.tags,
     });
-
-    res.status(200).redirect("/works/admin");
+    res.status(200).redirect("works/admin");
   });
 };
 

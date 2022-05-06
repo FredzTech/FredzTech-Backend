@@ -106,16 +106,28 @@ const WorkExperienceSchema = new Schema({
   },
 });
 const WorkSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     unique: true,
   },
-  email: {
+  description: {
     type: String,
     required: true,
   },
-  message: {
+  projectLink: {
+    type: String,
+    required: true,
+  },
+  codeLink: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  tags: {
     type: String,
     required: true,
   },
