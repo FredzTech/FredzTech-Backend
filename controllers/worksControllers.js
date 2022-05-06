@@ -45,7 +45,7 @@ const fetchPageController = (req, res) => {
   Work.find({}, (err, items) => {
     if (err) {
       console.log(err);
-      res.status(500).send("An error occurred", err);
+      res.status(500).send("An error occurred" + err);
     } else {
       res.status(200).send(items);
     }
@@ -65,12 +65,34 @@ const postImageController = (req, res, next) => {
       description: req.body.description,
       projectLink: req.body.projectLink,
       codeLink: req.body.codeLink,
-      imageUrl: req.file.location,
+      imageUrl: req.body.imageUrl,
       tags: req.body.tags,
     });
     res.status(200).redirect("works/admin");
   });
 };
+
+// const postImageController = async (req, res) => {
+//   //WORKING WITH THE RETURNED DATA AFTER MULTER DOES ITS THING.
+//   try {
+//     console.log(req.body);
+//     Work.remove({ name_1: null });
+//     const Works = new Work({
+//       title: req.body.title,
+//       description: req.body.description,
+//       projectLink: req.body.projectLink,
+//       codeLink: req.body.codeLink,
+//       imageUrl: req.body.imageUrl,
+//       tags: req.body.tags,
+//     });
+
+//     Works.save();
+
+//     res.status(200).send(Works);
+//   } catch (error) {
+//     res.status(400).send(error);
+//   }
+// };
 
 module.exports = {
   fetchPageAdminController,
