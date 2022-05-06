@@ -4,13 +4,24 @@ require("dotenv/config");
 
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
-const fetchPageController = (req, res) => {
+const fetchPageAdminController = (req, res) => {
   Contact.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
       res.render("contactsPage", { items: items });
+    }
+  });
+};
+
+const fetchPageController = (req, res) => {
+  Contact.find({}, (err, items) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("An error occurred", err);
+    } else {
+      res.status(200).send(items);
     }
   });
 };
@@ -26,10 +37,14 @@ const postImageController = async (req, res, next) => {
       message: req.body.message,
     });
 
-    res.status(200).redirect("/contacts");
+    res.status(200).redirect("contacts/admin");
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports = { fetchPageController, postImageController };
+module.exports = {
+  fetchPageAdminController,
+  fetchPageController,
+  postImageController,
+};

@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   fetchPageController,
   postImageController,
+  fetchPageAdminController,
 } = require("../controllers/brandsControllers");
 router.get("/test", async (req, res) => {
   try {
@@ -11,6 +12,8 @@ router.get("/test", async (req, res) => {
     res.send(error).status(500);
   }
 });
+
+router.get("/admin", fetchPageAdminController);
 
 router.get("/", fetchPageController);
 

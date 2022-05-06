@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   fetchPageController,
   postImageController,
+  fetchPageAdminController,
 } = require("../controllers/experiencesControllers");
 router.get("/test", async (req, res) => {
   try {
@@ -13,6 +14,8 @@ router.get("/test", async (req, res) => {
 });
 
 router.get("/", fetchPageController);
+
+router.get("/admin", fetchPageAdminController);
 
 router.post("/", postImageController);
 

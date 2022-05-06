@@ -31,13 +31,24 @@ const upload = multer({
 
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
-const fetchPageController = (req, res) => {
+const fetchPageAdminController = (req, res) => {
   Skill.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
       res.render("skillsPage", { items: items });
+    }
+  });
+};
+
+const fetchPageController = (req, res) => {
+  Skill.find({}, (err, items) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("An error occurred", err);
+    } else {
+      res.send(items).status(200);
     }
   });
 };
@@ -56,8 +67,12 @@ const postImageController = (req, res, next) => {
       name: req.body.name,
     });
 
-    res.status(200).redirect("/skills");
+    res.status(200).redirect("skills/admin");
   });
 };
 
-module.exports = { fetchPageController, postImageController };
+module.exports = {
+  fetchPageAdminController,
+  fetchPageController,
+  postImageController,
+};

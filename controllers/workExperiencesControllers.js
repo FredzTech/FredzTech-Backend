@@ -4,13 +4,24 @@ require("dotenv/config");
 
 //SERVER-SIDE RENDERING WITH EJS.
 //===============================
-const fetchPageController = (req, res) => {
+const fetchPageAdminController = (req, res) => {
   WorkExperience.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
     } else {
       res.render("workExperiencesPage", { items: items });
+    }
+  });
+};
+
+const fetchPageController = (req, res) => {
+  WorkExperience.find({}, (err, items) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("An error occurred", err);
+    } else {
+      res.send(items).status(200);
     }
   });
 };
@@ -26,10 +37,14 @@ const postImageController = async (req, res, next) => {
       description: req.body.description,
     });
 
-    res.status(200).redirect("/workExperiences");
+    res.status(200).redirect("workExperiences/admin");
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports = { fetchPageController, postImageController };
+module.exports = {
+  fetchPageAdminController,
+  fetchPageController,
+  postImageController,
+};
