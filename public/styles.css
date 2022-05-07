@@ -1,0 +1,119 @@
+body{
+
+     /* ff 3.6+ */
+    background:-moz-linear-gradient(30deg, rgba(31, 32, 50, 1) 0%, rgba(17, 9, 96, 1) 92%); 
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(30deg, rgba(31, 32, 50, 1) 0%, rgba(17, 9, 96, 1) 92%);
+
+    /* opera 11.10+ */
+    background:-o-linear-gradient(30deg, rgba(31, 32, 50, 1) 0%, rgba(17, 9, 96, 1) 92%);
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1F2032', endColorstr='#110960', GradientType=1 );
+
+    /* ie 10+ */
+    background:-ms-linear-gradient(30deg, rgba(31, 32, 50, 1) 0%, rgba(17, 9, 96, 1) 92%);
+
+    /* global 94%+ browsers support */
+    background:linear-gradient(30deg, rgba(31, 32, 50, 1) 0%, rgba(17, 9, 96, 1) 92%);
+
+};
+
+.container{
+    border: 1px solid black;
+    margin:0 25px;
+    display: flex;
+    flex-direction:column;
+}
+h1{
+	text-decoration: underline;
+	color: black;
+}
+form{
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	}
+
+	.form-button{
+		align-self: center;
+		margin-top:20px;
+	}
+
+	.form-button button{
+		height:40px;
+		width:120px;
+		font-size:18px;
+		border:none;
+		border-radius:5px;
+		background-color:rgb(32, 57, 149);
+		color:white;
+	}
+
+	.form-input{
+		display:flex;
+		justify-content: center;
+		align-items: center;
+       
+	}
+
+	.form-input input {
+		margin:10px 0;
+		height:2rem;
+		width:40vw;
+		font-size:20px;
+		font-style:italic;
+		font-family: 'Courier New', Courier, monospace;
+        outline:none;
+        border:none;
+        border-radius:5px;
+	}
+
+	textarea {
+		margin:0 10px;
+		height:100px;
+		width:40vw;
+        border:none;
+        outline:none;
+        border-radius:5px;
+
+	}
+    .image-box{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items:center;
+		margin:auto;
+		padding:auto;
+	}
+    .image-container{
+		display:flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+        align-items:flex-start;
+        justify-content:center;
+				
+	}
+    .image-card{
+		margin:0 5px;
+		display:flex;
+		flex-direction: column;
+		align-items:center;
+		text-transform: uppercase;
+		font-weight: 700;
+        border:1px solid black;
+
+	}
+
+	img{
+		height:200px;
+		width:100%;
+		margin:0 5px;
+        border:1px solid black;
+		border-radius:10px;
+	}
+	
+	h1,p,label{
+		color:white;
+	}

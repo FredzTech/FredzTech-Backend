@@ -10,7 +10,7 @@ const port = process.env.PORT || "3000";
 // INITIALIZING THE APPLICATION
 // =============================
 const app = express();
-
+app.use(express.static("public"));
 //CONNECTING THE SERVER TO MONGOOSE.
 //===================================
 const connectionUrl =
